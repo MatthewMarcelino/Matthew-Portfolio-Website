@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Matthew Marcelino</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+        .link-container {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            height: 1.25rem;
+            /* match font size 20px approx */
+            cursor: pointer;
+        }
+
+        .link-text {
+            display: block;
+            transition: transform 0.3s ease;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            /* text-sm */
+            line-height: 1.25rem;
+            color: inherit;
+        }
+
+        .link-text.hovered {
+            transform: translateY(-100%);
+        }
+
+        .link-text.duplicate {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            color: #facc15;
+            /* yellow-400 */
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .link-container:hover .link-text {
+            transform: translateY(-100%);
+        }
+
+        .link-container:hover .link-text.duplicate {
+            transform: translateY(-100%);
+        }
+
+        .sticky-nav {
+            position: fixed;
+            top: -100px;
+            left: 0;
+            right: 0;
+            background-color: inherit;
+            z-index: 100;
+            transition: top 0.3s ease;
+        }
+
+        .sticky-nav.visible {
+            top: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white transition-colors duration-300">
+    <nav
+        class="visible mt-4 flex items-center justify-between px-6 md:px-20 py-3 max-w-full relative sticky top-0 z-50 bg-black bg-inherit text-inherit">
+        <div
+            class="text-1xl md:text-2xl font-bold select-none leading-none hover:text-yellow-500 transition-colors duration-700">
+            Matthew Marcelino
+        </div>
+        <ul id="navLinks" class="hidden lg:flex space-x-20">
+            <li>
+                <a href="#About" class="link-container" aria-label="About link">
+                    <span class="link-text">About</span>
+                    <span class="link-text duplicate">About</span>
+                </a>
+            </li>
+            <li>
+                <a href="#Projects" class="link-container" aria-label="Projects link">
+                    <span class="link-text">Projects</span>
+                    <span class="link-text duplicate">Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="#Resume" class="link-container" aria-label="Resume link">
+                    <span class="link-text">Resume</span>
+                    <span class="link-text duplicate">Resume</span>
+                </a>
+            </li>
+            <li>
+                <a href="#Contact" class="link-container" aria-label="Contact link">
+                    <span class="link-text">Contact</span>
+                    <span class="link-text duplicate">Contact</span>
+                </a>
+            </li>
+        </ul>
+        <div class="flex items-center space-x-4 bg-inherit text-inherit">
+            <button id="colorModeToggle" aria-label="Color mode"
+                class="flex items-center space-x-2 text-white hover:text-yellow-400 transition-colors duration-200 focus:outline-none">
+                <i id="colorModeIcon" class="fas fa-sun"></i>
+                <span class="hidden sm:inline bg-inherit text-inherit">Color mode</span>
+            </button>
+            <button id="menuToggle" aria-label="Toggle menu"
+                class="lg:hidden text-white hover:text-yellow-400 transition-colors duration-200 focus:outline-none bg-inherit text-inherit">
+                <i id="menuIcon" class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu"
+            class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-95 text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-yellow-400">
+                <div class="text-2xl md:text-3xl font-bold select-none leading-none">
+                    Matthew Marcelino
+                </div>
+                <button id="menuClose" aria-label="Close menu"
+                    class="text-yellow-400 hover:text-yellow-300 focus:outline-none">
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+            </div>
+            <ul class="flex flex-col space-y-8 mt-10 px-6 text-xl font-bold">
+                <li>
+                    <a href="#About" class="link-container block" aria-label="About link mobile">
+                        <span class="link-text">About</span>
+                        <span class="link-text duplicate">About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#Projects" class="link-container block" aria-label="Projects link mobile">
+                        <span class="link-text">Projects</span>
+                        <span class="link-text duplicate">Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#Resume" class="link-container block" aria-label="Resume link mobile">
+                        <span class="link-text">Resume</span>
+                        <span class="link-text duplicate">Resume</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#Contact" class="link-container block" aria-label="Contact link mobile">
+                        <span class="link-text">Contact</span>
+                        <span class="link-text duplicate">Contact</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="px-6 mt-10 bg-inherit text-inherit">
+                <button id="colorModeToggleMobile" aria-label="Color mode mobile"
+                    class="flex items-center space-x-2 text-white hover:text-yellow-400 transition-colors duration-200 focus:outline-none">
+                    <i id="colorModeIconMobile" class="fas fa-sun"></i>
+                    <span>Color mode</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <section id="About" class="bg-inherit text-inherit relative">
+            <!-- Konten Kiri -->
+            <div
+                class="relative max-w-x mt-20 ml-20 px-3 py-2 bg-[#393E46] rounded-full inline-block  text-inherit hover:bg-yellow-500 transition-colors duration-300">
+                <p>Welcome to my portfolio webiste!</p>
+            </div>
+
+            <div class="lg:ml-20 ml-4 text-container">
+                <h1 class="text-4xl lg:text-6xl font-bold leading-tight">I'm
+                    <span>
+                        <span>Matthew</span>
+                        <span>Web Dev</span>
+                        <span>Front End</span>
+                        <span>Freelance</span>
+                        <span>Student</span>
+                    </span>
+                </h1>
+                <p
+                    class="text-gray-400 max-w-xl mb-2 leading-relaxed transition-colors duration-300 text-lg font-light leading-relaxed tracking-wide  text-inherit">
+                    I'm Matthew Marcelino, a passionate Fullstack Developer with strong skills in both hardware and
+                    software. I specialize in building responsive, user-focused web applications using JavaScript,
+                    PHP, Laravel, and Tailwind CSS. My goal is to create impactful digital solutions that inspire
+                    and perform.
+                </p>
+                <h2 class="text-xl font-bold mb-4 transition-colors duration-300">Skill</h2>
+                <ul class="flex flex-wrap gap-6 mb-10  text-inherit">
+                    <li
+                        class="flex flex-col items-center text-xs text-gray-300 space-y-1 transition-colors duration-300  text-inherit">
+                        <div
+                            class="hover:shadow-[0_0_20px_5px_rgba(250,204,21,0.6)] 
+                transition-shadow duration-[1500ms] cursor-pointer bg-[#1a1a2e] p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
+                            <i class="fas fa-database text-white text-lg"></i>
+                        </div>
+                        <span>MySQL</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center text-xs text-gray-300 space-y-1 transition-colors duration-300  text-inherit">
+                        <div
+                            class="hover:shadow-[0_0_20px_5px_rgba(250,204,21,0.6)] 
+                transition-shadow duration-[1500ms] cursor-pointer bg-[#1a1a2e] p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
+                            <i class="fab fa-python text-white text-lg"></i>
+                        </div>
+                        <span>Python</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center text-xs text-gray-300 space-y-1 transition-colors duration-300  text-inherit">
+                        <div
+                            class="hover:shadow-[0_0_20px_5px_rgba(250,204,21,0.6)] 
+                transition-shadow duration-[1500ms] cursor-pointer bg-[#1a1a2e] p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
+                            <i class="fab fa-js text-white text-lg"></i>
+                        </div>
+                        <span>JavaScript</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center text-xs text-gray-300 space-y-1 transition-colors duration-300  text-inherit">
+                        <div
+                            class="hover:shadow-[0_0_20px_5px_rgba(250,204,21,0.6)] 
+                transition-shadow duration-[1500ms] cursor-pointer bg-[#1a1a2e] p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
+                            <i class="fas fa-palette text-white text-lg"></i>
+                        </div>
+                        <span>UI/UX</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center text-xs text-gray-300 space-y-1 transition-colors duration-300  text-inherit">
+                        <div
+                            class="hover:shadow-[0_0_20px_5px_rgba(250,204,21,0.6)] 
+                transition-shadow duration-[1500ms] cursor-pointer bg-[#1a1a2e] p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
+                            <i class="fab fa-php text-white text-lg"></i>
+                        </div>
+                        <span>PHP</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center text-xs text-gray-300 space-y-1 transition-colors duration-300  text-inherit">
+                        <div
+                            class=" hover:shadow-[0_0_20px_5px_rgba(250,204,21,0.6)] 
+                transition-shadow duration-[1500ms] cursor-pointer bg-[#1a1a2e] p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
+                            <i class="fas fa-wind text-white text-lg"></i>
+                        </div>
+                        <span>Tailwind</span>
+                    </li>
+                    <li
+                        class="flex flex-col items-center text-xs text-gray-300 space-y-1 transition-colors duration-300  text-inherit">
+                        <div
+                            class=" hover:shadow-[0_0_20px_5px_rgba(250,204,21,0.6)] 
+                transition-shadow duration-[1500ms] cursor-pointer bg-[#1a1a2e] p-3 rounded-full shadow-lg flex items-center justify-center w-12 h-12">
+                            <i class="fab fa-git-alt text-white text-lg"></i>
+                        </div>
+                        <span>Git</span>
+                    </li>
+                </ul>
+                <div class="flex flex-wrap gap-4 ml-20">
+                    <a href="assets/CV.jpg" download="CV.jpg"
+                        class="flex items-center gap-2 bg-gray-200 text-gray-800 font-semibold rounded-full px-6 py-3 hover:bg-gray-300 transition-colors duration-300">
+                        <i class="fas fa-file-alt"></i> Download Resume
+                    </a>
+                    <a href="#Contact"
+                        class="bg-[#4b4a66] hover:bg-[#3a3950] transition-colors duration-300 text-white font-semibold rounded-full px-6 py-3">Get
+                        a free quote
+                    </a>
+                </div>
+                <div class="about-image lg:absolute lg:right-20 lg:top-10 order-last lg:order-2 w-full lg:w-auto px-4">
+                    <img src="assets/jay.jpg" alt="Foto"
+                        class="custom-img w-full md:w-[350px] mx-auto mt-10 md:mt-0">
+                </div>
+            </div>
+        </section>
+        <section id="Projects" class="bg-inherit text-inherit px-4 py-12">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-5xl font-bold text-center mb-10">Projects</h2>
+
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-gray-300">
+                                <video autoplay muted loop class="w-full h-full object-cover">
+                                    <source src="assets/uiux1.mp4" type="">
+                                </video>
+                            </div>
+                            <h3 class="text-xl font-bold ml-4 text-center">Project Lomba Web Design</h3>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="aspect-video rounded-xl overflow-hidden shadow-lg border border-gray-300">
+                                <video autoplay muted loop class="w-full h-full object-cover">
+                                    <source src="assets/ub.mp4" type="">
+                                </video>
+                            </div>
+                            <h3 class="text-xl font-bold ml-4 text-center">Auto Gate System</h3>
+                        </div>
+                    </div>
+
+                    <div class="swiper-button-next text-black text-inherit"></div>
+                    <div class="swiper-button-prev text-black text-inherit"></div>
+                </div>
+            </div>
+        </section>
+        <section id="Resume" class="bg-inherit text-inherit p-6 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+                <div>
+                    <h2 class="text-5xl font-bold mb-6">Experiences</h2>
+                    <div class="relative pl-16 mb-12">
+                        <div class="absolute left-0 top-0 flex flex-col items-center h-full">
+                            <div class="w-16 h-16  rounded-full bg-gray-800 text-white flex items-center justify-center font-bold text-lg">2025</div>
+                        </div>
+                        <h3 class="text-3xl font-bold ml-4">Auto Gate System</h3>
+                        <p class="font-semibold text-lg text-gray-600 mb-2 ml-6 mt-2">Visterra (Januari - Juli 2025)</p>
+                        <p class="text-lg text-gray-500 ml-4">Developed an automated gate control system using microcontroller-based hardware and custom software. Demonstrated strong proficiency in integrating hardware and software while delivering a reliable and efficient access solution.</p>
+                    </div>
+                    <div class="relative pl-16">
+                        <div class="absolute left-0 top-0 flex flex-col items-center h-full">
+                            <div class="w-16 h-16 rounded-full bg-gray-800 text-white flex items-center justify-center font-bold text-lg">2024</div>
+                        </div>
+                        <h3 class="text-3xl font-bold ml-4">Freelance Web Developer</h3>
+                        <p class="font-semibold text-base text-gray-600 mb-2 ml-6 mt-2">Omahama (August - September)</p>
+                        <p class="text-lg text-gray-500 ml-4">Successfully completed a freelance web development project utilizing Laravel framework. Demonstrated ability to work independently, manage client requirements solutions within project timelines.</p>
+                    </div>
+                </div>
+                                <div>
+                    <h2 class="text-5xl font-bold mb-6">Educations</h2>
+                    <div class="relative pl-16 mb-12">
+                        <div class="absolute left-0 top-0 flex flex-col items-center h-full">
+                            <div class="w-16 h-16  rounded-full bg-gray-800 text-white flex items-center justify-center font-bold text-lg">2025</div>
+                        </div>
+                        <h3 class="text-3xl font-bold ml-4">Basic Web Programming</h3>
+                        <p class="font-semibold text-lg text-gray-600 mb-2 ml-6 mt-2">Dicoding</p>
+                        <p class="text-lg text-gray-500 ml-4">Learned fundamental web development including HTML, CSS, and JavaScript through comprehensive courses on the Dicoding learning platform.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section id="Contact" class="bg-inherit text-inherit py-12 px-4 md:px-0">
+            <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6 items-center">
+                <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126915.3954353147!2d110.3234287!3d-6.9666671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b4e08c1e891%3A0x3027a76e352bc70!2sSemarang%2C%20Semarang%20City%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1717397260000!5m2!1sen!2sid"
+                        frameborder="0" class="rounded-lg" width="100%" height="300" style="border:0;"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="p-6 text-center text-inherit">
+                        <h3 class="text-xl font-bold mb-1">Matthew Marcelino Oktobryan P</h3>
+                        <p class="text-gray-300">matthewseko221@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="w-full">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 leading-snug">
+                        Interested to work together?<br>Let's talk
+                    </h2>
+                    <form class="space-y-4 bg-inherit text-inherit">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-inherit text-inherit">
+                            <input type="text" placeholder="Your Name"
+                                class="w-full p-3 bg-black border border-white rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                            <input type="email" placeholder="Email"
+                                class="w-full p-3 bg-black border border-white rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        </div>
+                        <input type="text" placeholder="No Telepon"
+                            class="w-full p-3 bg-black border border-white rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        <textarea placeholder="Message" rows="5"
+                            class="w-full p-3 bg-black border border-yellow-400 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+                        <button type="submit"
+                            class="bg-yellow-400 text-black font-bold py-3 px-6 rounded-full hover:bg-yellow-500 transition w-full sm:w-auto">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+<footer class="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4 text-center">
+    <p>Copyright © 2025 - All right reserved by Matthew Marcelino</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.35/bundled/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const toggleBtn = document.getElementById('colorModeToggle');
+        const icon = document.getElementById('colorModeIcon');
+        const toggleBtnMobile = document.getElementById('colorModeToggleMobile');
+        const iconMobile = document.getElementById('colorModeIconMobile');
+        const body = document.body;
+
+        function setDarkMode() {
+            body.classList.remove('bg-white', 'text-black');
+            body.classList.add('bg-black', 'text-white');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            iconMobile.classList.remove('fa-moon');
+            iconMobile.classList.add('fa-sun');
+        }
+
+        function setLightMode() {
+            body.classList.remove('bg-black', 'text-white');
+            body.classList.add('bg-white', 'text-black');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            iconMobile.classList.remove('fa-sun');
+            iconMobile.classList.add('fa-moon');
+        }
+
+        function toggleColorMode() {
+            if (body.classList.contains('bg-black')) {
+                setLightMode();
+            } else {
+                setDarkMode();
+            }
+        }
+
+        toggleBtn.addEventListener('click', toggleColorMode);
+        toggleBtnMobile.addEventListener('click', toggleColorMode);
+
+        // Hamburger menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuClose = document.getElementById('menuClose');
+
+        function openMenu() {
+            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            // Prevent body scroll when menu open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('-translate-x-full');
+            // Restore body scroll
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+
+        // Close menu when clicking outside menu links (optional)
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                closeMenu();
+            }
+        });
+
+        // Accessibility: close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('translate-x-0')) {
+                closeMenu();
+            }
+        });
+  const swiper = new Swiper('.swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 1,
+      },
+    },
+  });
+    </script>
+</body>
+<link rel="stylesheet" href="anmation.js">
+</html>

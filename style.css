@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Container utama */
+body {
+  padding: 12px;
+  min-height: 100vh;
+}
+
+/* Penyesuaian typography mobile */
+h1, h2, h3 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Layout sections */
+section {
+  margin-bottom: 1.5rem;
+}
+
+/* Menu list */
+ul {
+  padding-left: 1rem;
+}
+
+li {
+  list-style: none;
+  margin: 8px 0;
+}
+
+/* Tabel responsif */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Media query khusus iPhone SE */
+@media (max-width: 375px) {
+  body {
+    padding: 8px;
+  }
+  
+  h1 {
+    font-size: 1.3rem;
+  }
+  
+  p {
+    font-size: 13px;
+  }
+  
+  /* Perbaikan layout complex elements */
+  .mixed-galant-backleading-tight {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  /* Button adjustment */
+  .button-full {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  /* Text container */
+  .text-container {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+}
+
+
+h1 > span {
+  display: inline-block;
+  position: relative;
+  width: 500px; /* Sesuaikan panjang teks */
+  height: 5rem;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+h1 > span > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  animation: gantiKata 10s linear infinite;
+  color: orange;
+}
+
+h1 > span > span:nth-child(1) { animation-delay: 0s; }
+h1 > span > span:nth-child(2) { animation-delay: 2s; }
+h1 > span > span:nth-child(3) { animation-delay: 4s; }
+h1 > span > span:nth-child(4) { animation-delay: 6s; }
+h1 > span > span:nth-child(5) { animation-delay: 8s; }
+
+@keyframes gantiKata {
+  0% { opacity: 0; transform: translateY(100%); }
+  10% { opacity: 1; transform: translateY(0); }
+  20% { opacity: 1; transform: translateY(0); }
+  30% { opacity: 0; transform: translateY(-100%); }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 1100px) {
+  .lg\:absolute {
+    position: static !important;
+  }
+  
+  .lg\:right-20 {
+    right: auto !important;
+  }
+  
+  .about-image {
+    order: 9999; /* Pastikan foto di bawah semua elemen */
+    margin-top: 2rem;
+    width: 100%;
+  }
+}
